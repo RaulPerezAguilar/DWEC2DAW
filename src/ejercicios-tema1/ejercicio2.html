@@ -6,20 +6,23 @@
 </head>
 <body>
     <script>
+        //Creamos una funcion
         function numhijos()
         {
+            //Inicializamos las variables
             var num;
+            //Con prompt estamos solicitando un dato a traves de una alerta
             var opcion = prompt("¿Cuantos hijos?");
-
+            //Verificamos que no se deje el campo vacio
             if (opcion == null || opcion == "") {
                 num = "No has introducidod una cantidad valida"
             } else {
                 num = opcion + " Hijos";
             }
-
+            //Mostramos los resultados por alerta
             alert(num);
         }
-
+        //Invocamos la funcion
         numhijos();
     </script>
 
