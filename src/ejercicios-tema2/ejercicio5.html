@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicio5</title>
+</head>
+<body>
+    <script>
+        function menormayor() {
+            alert("Indica tres numeros a ordenar");
+            var numero1 = Number(prompt("Indica el primer numero"));
+            var numero2 = Number(prompt("Indica el segundo numero"));
+            var numero3 = Number(prompt("Indica el tercer numero"));
+
+            if (numero1 < numero2 && numero2 < numero3) {
+                alert(numero1 + " " + numero2 + " " + numero3);
+            } else if (numero1 < numero3 && numero3 < numero2) {
+                alert(numero1 + " " + numero3 + " " + numero2);
+            } else if (numero2 < numero1 && numero1 < numero3) {
+                alert(numero2 + " " + numero1 + " " + numero3);
+            } else if (numero2 < numero3 && numero3 < numero1) {
+                alert(numero2 + " " + numero3 + " " + numero1);
+            } else if (numero3 < numero1 && numero1 < numero2) {
+                alert(numero3 + " " + numero1 + " " + numero2);
+            } else {
+                alert(numero3 + " " + numero2 + " " + numero1);
+            }
+        }
+        menormayor();
+        var numeros = []
+        var n1 = Number(prompt("Indica el primer numero"));
+        numeros.push(n1)
+        var n2 = Number(prompt("Indica el segundo numero"));
+        numeros.push(n2)
+        var n3 = Number(prompt("Indica el tercer numero"));
+        numeros.push(n3)
+        numeros.sort(function (a, b) {return a - b})
+        alert(numeros.join(", "))
+    </script>
+</body>
+</html>

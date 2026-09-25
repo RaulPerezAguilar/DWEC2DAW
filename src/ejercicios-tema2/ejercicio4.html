@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ejercicio4</title>
+</head>
+<body>
+<script>
+    function calcular() {
+        var sueldo = Number(prompt("Indica el sueldo que tiene"));
+        var anio = Number(prompt("Indica los años de antigüedad"));
+        var sueldofinal;
+
+        if (anio >= 10 && sueldo < 750) {
+            sueldofinal = sueldo * 1.10;
+        } else if (anio >= 10 && sueldo >= 750) {
+            sueldofinal = sueldo * 1.05;
+        } else {
+            sueldofinal = sueldo;
+        }
+
+        alert("Su sueldo final es: " + sueldofinal);
+    }
+
+    calcular();
+</script>
+</body>
+</html>
