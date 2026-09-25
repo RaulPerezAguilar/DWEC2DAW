@@ -1,0 +1,51 @@
+```html
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicio6</title>
+</head>
+<body>
+
+<script>
+    function calcular() {
+        // Pedimos los coeficientes
+        let a = parseFloat(prompt("Introduce el valor de a:"));
+        let b = parseFloat(prompt("Introduce el valor de b:"));
+        let c = parseFloat(prompt("Introduce el valor de c:"));
+
+        // Comprobamos que a no sea 0
+        if (a === 0) {
+            alert("El valor de 'a' no puede ser 0.");
+            return;
+        }
+
+        // Calculamos el discriminante
+        let discriminante = b * b - 4 * a * c;
+
+        // Calculamos las soluciones
+        if (discriminante > 0) {
+            let x1 = (-b + Math.sqrt(discriminante)) / (2 * a);
+            let x2 = (-b - Math.sqrt(discriminante)) / (2 * a);
+
+            alert("Las soluciones son:\nx1 = " + x1 + "\nx2 = " + x2);
+        }
+        else if (discriminante === 0) {
+            let x = -b / (2 * a);
+
+            alert("La solución es:\nx = " + x);
+        }
+        else {
+            alert("La ecuación no tiene soluciones reales.");
+        }
+    }
+
+    calcular();
+</script>
+
+</body>
+</html>
+```
