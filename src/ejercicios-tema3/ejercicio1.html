@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+<script>
+    // Opción 1: pide la figura (devuelve "cubo", "esfera" o "cilindro")
+    function pedirFigura() {
+        let eleccion = prompt("Elegir entre:\n1. Cubo\n2. Esfera\n3. Cilindro");
+        if (eleccion === "1") return "cubo";
+        if (eleccion === "2") return "esfera";
+        if (eleccion === "3") return "cilindro";
+        alert("Opción no válida");
+        return "";
+    }
+
+    // Opción 2: pide las medidas según la figura (devuelve un array)
+    function pedirMedidas(figura) {
+        if (figura === "cubo") {
+            return [parseFloat(prompt("Introduzca lado del cubo (cm):"))];
+        }
+        if (figura === "esfera") {
+            return [parseFloat(prompt("Introduzca radio de la esfera (cm):"))];
+        }
+        let radio = parseFloat(prompt("Introduzca radio del cilindro (cm):"));
+        let altura = parseFloat(prompt("Introduzca altura del cilindro (cm):"));
+        return [radio, altura];
+    }
+
+    // Opción 3: calcula el volumen
+    function calcularVolumen(figura, medidas) {
+        if (figura === "cubo") {
+            return Math.pow(medidas[0], 3);
+        }
+        if (figura === "esfera") {
+            return 4 / 3 * Math.PI * Math.pow(medidas[0], 3);
+        }
+        return Math.PI * Math.pow(medidas[0], 2) * medidas[1];
+    }
+
+    // Opción 4: calcula el área
+    function calcularArea(figura, medidas) {
+        if (figura === "cubo") {
+            return 6 * Math.pow(medidas[0], 2);
+        }
+        if (figura === "esfera") {
+            return 4 * Math.PI * Math.pow(medidas[0], 2);
+        }
+        return 2 * Math.PI * medidas[0] * (medidas[0] + medidas[1]);
+    }
+
+    // Función principal: muestra el menú hasta que se elige "Finalizar".
+    // Las variables son locales a esta función (no hay globales).
+    function caos() {
+        let opcion;
+        let figura = "";
+        let medidas = [];
+
+        do {
+            opcion = prompt(
+                "Elige una opción:\n" +
+                "1. Elija entre cubo, esfera o cilindro.\n" +
+                "2. Introduzca los valores de las variables.\n" +
+                "3. Cálculo de volumen.\n" +
+                "4. Cálculo de área.\n" +
+                "5. Finalizar."
+            );
+
+            if (opcion === "1") {
+                figura = pedirFigura();
+                medidas = [];
+            } else if (opcion === "2") {
+                if (figura === "") {
+                    alert("Primero elige una figura (opción 1).");
+                } else {
+                    medidas = pedirMedidas(figura);
+                }
+            } else if (opcion === "3" || opcion === "4") {
+                if (figura === "" || medidas.length === 0) {
+                    alert("Primero elige la figura y sus medidas (opciones 1 y 2).");
+                } else if (opcion === "3") {
+                    alert("Volumen de la figura = " + calcularVolumen(figura, medidas).toFixed(2) + " cm3");
+                } else {
+                    alert("Área de la figura = " + calcularArea(figura, medidas).toFixed(2) + " cm2");
+                }
+            } else if (opcion !== "5") {
+                alert("Opción no válida");
+            }
+        } while (opcion !== "5" && opcion !== null);
+
+        document.write("Programa finalizado.");
+    }
+
+    caos();
+</script>
+</body>
+</html>
