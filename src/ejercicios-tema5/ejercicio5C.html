@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Empleado y Profesor</title>
+    <script>
+        // --- Clase padre ---
+        class Empleado {
+            #edad; // atributo PRIVADO (se declara con # y sólo se ve dentro de la clase)
+
+            constructor(nombre, apellido, edad) {
+                this.nombre = nombre;     // públicos
+                this.apellido = apellido;
+                this.#edad = edad;
+            }
+
+            // Muestra los tres atributos
+            muestra() {
+                return `Nombre: ${this.nombre} ${this.apellido}\nEdad: ${this.#edad}`;
+            }
+        }
+
+        // --- Clase hija: hereda de Empleado ---
+        class Profesor extends Empleado {
+            constructor(nombre, apellido, edad, cargo) {
+                super(nombre, apellido, edad); // llama al constructor del padre
+                this.cargo = cargo;
+            }
+
+            muestraCargo() {
+                return `Cargo: ${this.cargo}`;
+            }
+        }
+
+        // --- Programa principal ---
+        function main() {
+            const profe = new Profesor("Francisco José", "Lamela", 1820, "Asesor financiero de kiko ribera");
+            alert(profe.muestra() + "\n" + profe.muestraCargo());
+        }
+
+        main();
+    </script>
+</head>
+<body>
+</body>
+</html>
