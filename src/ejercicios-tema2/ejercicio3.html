@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicio3</title>
+</head>
+<body>
+    <script>
+        function comprobar() {
+            alert("Indica tres numeros mayores que 10 pero menosres que 100")
+            var numero1 = prompt("Indica el primer numero");
+            var numero2 = prompt("Indica el segundo numero");
+            var numero3 = prompt("Indica el tercer numero");
+            if (numero1 > 10 && numero1 < 100 && numero2 < 100 && numero2 > 10 && numero3 < 100 && numero3 > 10) {
+                alert("Ok")
+            } else {
+                alert("Error, no cumple el requisito")
+            }
+        }
+        comprobar()
+    </script>
+</body>
+</html>

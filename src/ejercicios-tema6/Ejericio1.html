@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" >
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+    <style type="text/css">
+        input:invalid {border: 1px solid red; }
+        input:valid {border: 1px solid green;}
+    </style>
+    <script>
+
+        // TODO: COMPLETAR AQUÍ EL CÓDIGO JAVASCRIPT
+
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="row" >
+        <h2>Solicitud de baja de vehículos.</h2>
+        <br><br><br>
+    </div>
+
+    <form>
+        <div class="row" >
+            <h5>Datos del vehículo:</h5>
+        </div>
+        <div class="row border" >
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label  for="matri">Matrícula:</label> <!-- localizador    -->
+                    <input type="text" class="form-control" id="matri"  name="matri" pattern="^[0-9]{4}[A-Z]{3}$"  required>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label  for="fMatri">Fecha matriculación:</label>
+                    <input type="date" class="form-control" id="fMatri"  name="fMatri" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="nb">6 últimos dígitos (nº bastidor):</label>
+                    <input type="text" class="form-control" id="nb" pattern="^[0-9]{6}" name="nb" required>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <h5>Datos del titular:</h5>
+        </div>
+        <div class="row border" >
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label  for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre"  name="nombre" required>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label  for="apell">Apellidos:</label>
+                    <input type="text" class="form-control" id="apell"  name="apell" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="domi">Domicilio:</label>
+                    <input type="text" class="form-control" id="domi"  name="domi" required>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row border" >
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label id="ldni">DNI:</label>
+                    <input type="text" id="dni" class="form-control" name="dni"
+                           pattern="^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$" placeholder="11111111A" required>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Correo electrónico:</label>
+                    <input type="email"class="form-control" id="mail" name="mail" required>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Tlf:</label>
+                    <input type="tel" class="form-control" id="tlf"  name="tlf" pattern="^[6-9][0-9]{8}$" required>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Tipo de baja:</label><br>
+                    <input type="radio"  name="baja" value="t" required>Temporal<br>
+                    <input type="radio"  name="baja" value="d" required>Definitiva<br>
+                </div>
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+
+    </form>
+
+
+</div>
+
+</body>
+</html>

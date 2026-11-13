@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio de sesión</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style type="text/css">
+        input:invalid {border: 1px solid red;}
+        input:valid {border: 1px solid green;}
+    </style>
+    <script>
+        // Clase 1: guarda los usuarios (array privado) y sabe comprobar si uno es válido
+        class Usuarios {
+            #lista = [
+                {usuario: "LOLIPOP",   clave: "LoliANDPOP69"},
+                {usuario: "LopezOrChoped",  clave: "CastorMaster77"},
+                {usuario: "JOseIgnacia", clave: "ComeTartasPanchas018"}
+            ];
+
+            existe(usuario, clave) {
+                return this.#lista.some(u => u.usuario === usuario && u.clave === clave);
+            }
+        }
+
+        // Clase 2: controla el formulario (validación del patrón y envío)
+        class Login {
+            #usuarios;
+            #form;
+            #inpUsuario;
+            #inpClave;
+            #patron = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$/;   // 8+ caracteres, 1 minúscula, 1 mayúscula, 1 número
+
+            constructor(usuarios) {
+                this.#usuarios = usuarios;
+                this.#form = document.getElementById("formLogin");
+                this.#inpUsuario = document.getElementById("usuario");
+                this.#inpClave = document.getElementById("clave");
+                this.#form.addEventListener("submit", e => this.#enviar(e));
+                this.#inpClave.addEventListener("input", () => this.#validarFormato());
+            }
+
+            // Marca el campo como inválido (y muestra el formato) si no cumple el patrón
+            #validarFormato() {
+                if (this.#patron.test(this.#inpClave.value)) {
+                    this.#inpClave.setCustomValidity("");
+                    return true;
+                }
+                this.#inpClave.setCustomValidity("Mínimo 8 caracteres con al menos 1 mayúscula, 1 minúscula y 1 número");
+                return false;
+            }
+
+            #enviar(e) {
+                e.preventDefault();                       // por defecto NO se envía
+                if (!this.#validarFormato()) {
+                    alert("Formato de contraseña no válido: mínimo 8 caracteres, al menos 1 mayúscula, 1 minúscula y 1 número");
+                    return;
+                }
+                if (this.#usuarios.existe(this.#inpUsuario.value, this.#inpClave.value)) {
+                    alert("Se ha iniciado sesión");
+                    this.#form.submit();                  // sólo se envía en este caso
+                } else {
+                    alert("No coinciden usuario o contraseña");
+                }
+            }
+        }
+
+        window.addEventListener("load", () => new Login(new Usuarios()));
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h2>Inicio de sesión</h2>
+        <br><br><br>
+    </div>
+
+    <form id="formLogin" action="#" method="post">
+        <div class="row border">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="usuario">Usuario:</label>
+                    <input type="text" class="form-control" id="usuario" name="usuario" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="clave">Contraseña:</label>
+                    <input type="password" class="form-control" id="clave" name="clave"
+                           pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$"
+                           title="Mínimo 8 caracteres, al menos 1 mayúscula, 1 minúscula y 1 número" required>
+                    <small class="form-text text-muted">Formato: mínimo 8 caracteres, con al menos 1 mayúscula, 1 minúscula y 1 número.</small>
+                </div>
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 8</title>
+</head>
+<body>
+
+<script>
+  let numero = parseInt(prompt("Introduce un número:"));
+  let original = numero;
+  let factores = [];
+
+  for (let i = 2; i <= numero; i++) {
+    while (numero % i === 0) {
+      factores.push(i);
+      numero = numero / i;
+    }
+  }
+
+  document.write(
+          "La descomposición en factores primos de " +
+          original + " es: " +
+          factores.join(" * ")
+  );
+</script>
+
+</body>
+</html>
